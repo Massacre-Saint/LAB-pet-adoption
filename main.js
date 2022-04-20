@@ -210,3 +210,22 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+pets.forEach((item, index) => {
+  item.id = index + 1;
+});
+console.log(pets[]);
+
+  const app = document.querySelector("#petApp"); /* this finds the div element with the id*/
+  let cardInfo = ""; /* this will be the iterator that will be used as vessel for cards */
+
+  for (const petListing of pets) {
+    cardInfo += `<div class="card" style="width: 18rem;">
+    <img src="${pets.imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>`;
+  }
+  app.innerHTML = cardInfo;
