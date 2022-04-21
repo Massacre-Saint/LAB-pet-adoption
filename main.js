@@ -11,7 +11,7 @@ const pets = [
       color: "Brown",
       specialSkill: "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Whiskers",
@@ -53,7 +53,7 @@ const pets = [
       color: "Grey",
       specialSkill: "Comfortable in the outdoors for up to eight hours.",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Sassy",
@@ -74,7 +74,7 @@ const pets = [
       color: "Orange",
       specialSkill: "Can be around food without staring creepily at it.",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Buster",
@@ -109,49 +109,49 @@ const pets = [
       color: "Brown",
       specialSkill: "Drives at a safe rate of speed in snow or rain.",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Muffin",
       color: "Yellow",
       specialSkill: "Does not freak out if you haven’t seen his favorite movie (The Big Lebowski).",
       type: "cat",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Salem",
       color: "Brown",
       specialSkill: "Proficient in air guitar",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Callie",
       color: "Blue",
       specialSkill: "Listens attentively to boring stories.",
       type: "dog",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Spooky",
       color: "Black",
       specialSkill: "Uses litter box at appropriate hours.",
       type: "cat",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Miss kitty",
       color: "Red",
       specialSkill: "Owns a Nintendo Power Glove.",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Snuggles",
       color: "Orange",
       specialSkill: "Is comfortable with jokes about his receding hairline.",
       type: "cat",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Buddy",
