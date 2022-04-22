@@ -165,14 +165,14 @@ const pets = [
       color: "Brown",
       specialSkill: "Participates in karaoke but does not force others to go out to karaoke.",
       type: "dog",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Salem",
       color: "Red",
       specialSkill: "Knows the words to 4 rap songs.",
       type: "cat",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     },
     {
       name: "Bubba",
@@ -207,7 +207,7 @@ const pets = [
       color: "Red",
       specialSkill: "Doesn’t get weirded out by the word “moist.”",
       type: "dino",
-      imageUrl: "https://i.etsystatic.com/7381279/r/il/c245f2/2197807890/il_fullxfull.2197807890_k85e.jpg"
+      imageUrl: "adopted.jpg"
     }
   ];
 // pets.forEach(function(pet, index, array){
@@ -220,13 +220,16 @@ const cardContainer = document.querySelector("#petApp"); /* this finds the div e
 
   let cardInfo = ''; /* this will be the iterator that will be used as vessel for cards */
   for (const pet of pets) {
-    cardInfo += `<div class="card" style="width: 18rem;">
+    cardInfo += `
+    <div class="card" style="width: 18rem;">
     <h5>${pet.name}</h5>
-    <img src="${pet.imageUrl}" class="card-img-top" alt="...">
     <div class="card-body">
-      <p class="card-text">${pet.specialSkill}</p>
-      <p class="card-text">${pet.type}</p>
-    </div>
-  </div>`;
+      <img src="${pet.imageUrl}" class="card-img-top" alt="...">
+        <p class="card-text">${pet.color}</p>
+        <p class="card-text">${pet.specialSkill}</p>
+      </div>
+      <p class="type">${pet.type}</p>
+  </div>
+  `;
   }
 cardContainer.innerHTML = cardInfo;

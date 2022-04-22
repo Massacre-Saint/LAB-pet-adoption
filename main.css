@@ -3,14 +3,54 @@
   padding: 0;
 }
 body {
-  background-color: rgb(37, 37, 133);
+  background-color: #E5D4C0;
   /* margin-left: 275px;
   margin-right: 275px; */
+  font-family: 'Roboto Condensed', sans-serif;
 }
- .card-container {
+ #petApp {
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-around;
-   gap: 70px;
-   max-width: 60vw
+   row-gap: 70px;
+   column-gap: 100px;
+   justify-content: center;
+   margin-left: 250px;
+   margin-right: 250px;
+ }
+
+ h5 {
+   background-color: #A1E8CC;
+   color: #4E3D42;
+   font-weight: bold;
+   text-align: center;
+   margin: 0px;
+   padding: 6px;
+ } 
+
+.card {
+  background-color: #B47EB3;
+  border-radius: 5px;
+  
+}
+.card img {
+  border-style:solid;
+  border-width: 11px;
+  border-radius: 8px;
+  border-color: #7a5661;
+}
+ p {
+   text-align: center;
+   font-size: 20px;
+ }
+ 
+ .card-text {
+   align-self: flex-end;
+ }
+
+ .type {
+   background-color: #A1E8CC;
+   margin: 0px;
+   padding: 6px;
+   font-weight: bold;
+   color: #4E3D42;
  }
