@@ -212,12 +212,13 @@ const pets = [
   ];
   /* This is  for adding id value to array*/
 
-// pets.forEach(function(pet, index, array){
-//   pet.id = index + 1;                         
-// });                                             
-for (const pet of pets) {
-  pet['id'] =+ 1;
-}
+pets.forEach(function(pet, index, array){
+  pet.id = index + 1;                         
+});                                             
+// for (const pet of pets) {
+//   pet['id'] =+ 1;
+// }
+
 /****************************************** */
 
             /* Utility Function*/
@@ -230,7 +231,7 @@ const petBtnModal = () => {
   const domString = `
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#add-video">
-    Add Video
+    Add Pet
     </button>
     <!-- Modal -->
     <div class="modal fade" id="add-video" tabindex="-1" aria-labelledby="add-video" aria-hidden="true">
@@ -285,12 +286,6 @@ const petBtnModal = () => {
   renderToDom('#add-pet', domString);
 };
 
-
-
-
-
-
-
 /******************* Buttons******************/
 const filterButtons = () => {
   const domString = `
@@ -316,22 +311,61 @@ const cardsOnDom = (pets) => {
             <p class="card-text">${pet.specialSkill}</p>
           </div>
           <p class="type">${pet.type}</p>
+          <button class="btn btn-danger" id="delete--${pet['id']}">X</button>
       </div>
       `;
   }
   renderToDom('#petApp', domString);
 }
-/******************* Events******************/
+/******************* Events Listeners******************/
 const eventListeners = () => {
   // Bootstrap for grabbing modal so can manually open and close
   const formModal = new bootstrap.Modal(document.querySelector('#add-pet'));
+
+/******************* Filter Button Row******************/
+// const button = document.querySelector('#id'); /*targets element on dom*/
+// button.addEventListener('click', () => {}); /*add event listerer*/
+// document.querySelector('#id').eventListener('click', () => {});
+// this is called chaining. when you append .event instead of making it a variable
+  document.querySelector('#filter-buttons').addEventListener('click', (e) => {
+    // console.log("Ck", e.target.id);
+    if (e.target.id === 'clear') {
+      cardsOnDom(pets);
+    } else if (e.target.id) {
+      const species = pets.filter(taco => taco.type === e.target.id);
+     
+      // const array =[];
+  // for (const vid of data) {
+  //   if (vid.favorite === true) {
+  //     array.push(vid);
+  //   }
+  // }
+  // cardsOnDom(array)
+
+      cardsOnDom(species);
+    }
+  });
+  // Buttons on Cards
+  document.querySelector('#petApp').addEventListener('click', (e) => {
+    if (e.target.id) {
+      const [method, petId] = e.target.id.split('--'); /*destructuring */
+      // const petId = e.target.id.split('--');
+      // console.log(petId[1]); checked for ID of pet
+      // console.log(e.target.id.split("--")) check for both type and ID
+      if (e.target.id.includes("delete")) {
+        console.log("Delete Button Pressed") /*checked for button type */
+      }
+    }
+  })
+ 
 }
+
 /***Funtions to Start Application **********/
 
 filterButtons();
 cardsOnDom(pets);
 petBtnModal();
-
+eventListeners(); /* last*/
 
 
 
