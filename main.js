@@ -211,14 +211,10 @@ const pets = [
     }
   ];
   /* This is  for adding id value to array*/
-
-pets.forEach(function(pet, index, array){
-  pet.id = index + 1;                         
-});                                             
-// for (const pet of pets) {
-//   pet['id'] =+ 1;
-// }
-
+// const petsId = () =>
+  pets.forEach((pet,index, pets) => {
+  return pet.id = index + 1;                         
+});
 /****************************************** */
 
             /* Utility Function*/
@@ -229,59 +225,57 @@ const renderToDom = (divId, textToRender) => {
 
 const petBtnModal = () => {
   const domString = `
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#add-video">
-    Add Pet
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="add-video" tabindex="-1" aria-labelledby="add-video" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen-md-down">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Add Video</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modal-body">
-          <form>
-          <div class="form-floating mb-3">
-            <input class="form-control form-control-lg" type="text" placeholder="Video ID" id="videoId" aria-label="video id" required>
-            <label for="videoId">YouTube Video ID</label>
-          </div>
-      
-          <div class="form-floating mb-3">
-            <input class="form-control form-control-lg" type="text" placeholder="Title" id="title" aria-label="title" required>
-            <label for="title">Title</label>
-          </div>
-      
-          <div class="form-floating mb-3">
-            <select class="form-select form-control-lg" id="category" aria-label="category" required>
-              <option value="">Select a category</option>
-              <option value="html">HTML</option>
-              <option value="css">CSS</option>
-              <option value="javascript">JavaScript</option>
-              <option value="music">Music</option>
-            </select>
-            <label for="category">Category</label>
-          </div>
-          
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="favorite">
-            <label class="form-check-label" for="favorite">
-              Favorite
-            </label>
-          </div>
-      
-          <button 
-            type="submit" 
-            class="btn btn-success" 
-          >
-            Submit
-          </button>
-        </form>
-          </div>
+  <!-- Button trigger modal -->
+  <button type="button" class="add-pet" data-bs-toggle="modal" data-bs-target="#add-video">
+  Heartless Bastard
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="add-video" tabindex="-1" aria-labelledby="add-video" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">About your furry friend..</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modal-body">
+
+        <form>
+        <div class="form-floating mb-3">
+          <input class="form-control form-control-lg" type="text" placeholder="Video ID" id="name" aria-label="video id" required>
+          <label for="videoId">Pet's Name</label>
+        </div>
+    
+        <div class="form-floating mb-3">
+        <input class="form-control form-control-lg" type="text" placeholder="Title" id="color" aria-label="title" required>
+        <label for="title">Favorite Color</label>
+      </div>
+
+      <div class="form-floating mb-3">
+      <input class="form-control form-control-lg" type="text" placeholder="Title" id="specialSkill" aria-label="title" required>
+      <label for="title">Special Skill</label>
+    </div>
+
+        <div class="form-floating mb-3">
+          <select class="form-select form-control-lg" id="type" aria-label="category" required>
+            <option value="">Select a species</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+            <option value="dino">Dino</option>
+          </select>
+          <label for="category">Type</label>
+        </div>
+    
+        <button 
+          type="submit" 
+          class="btn btn-success" 
+        >
+          Submit
+        </button>
+      </form>
         </div>
       </div>
     </div>
+  </div>
   `;
   renderToDom('#add-pet', domString);
 };
@@ -289,11 +283,11 @@ const petBtnModal = () => {
 /******************* Buttons******************/
 const filterButtons = () => {
   const domString = `
-  <div class="d-flex flex-wrap justify-content-between my-3">
-    <button class="btn btn-secondary btn-lg buttonRow" id="cat">Cats</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="dog">Dogs</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="dino">Dinos</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="clear">Clear Filter</button>
+  <div class="filter-buttons">
+    <button id="cat">Cats</button>
+    <button id="dog">Dogs</button>
+    <button id="dino">Dinos</button>
+    <button id="clear">Clear Filter</button>
   </div> `;
   renderToDom('#filter-buttons', domString);
 };
@@ -311,7 +305,7 @@ const cardsOnDom = (pets) => {
             <p class="card-text">${pet.specialSkill}</p>
           </div>
           <p class="type">${pet.type}</p>
-          <button class="btn btn-danger" id="delete--${pet['id']}">X</button>
+          <button class="btn btn-danger" id="delete--${pet.id}">X</button>
       </div>
       `;
   }
@@ -348,44 +342,44 @@ const eventListeners = () => {
   // Buttons on Cards
   document.querySelector('#petApp').addEventListener('click', (e) => {
     if (e.target.id) {
-      const [method, petId] = e.target.id.split('--'); /*destructuring */
-      // const petId = e.target.id.split('--');
-      // console.log(petId[1]); checked for ID of pet
-      // console.log(e.target.id.split("--")) check for both type and ID
+      const [method, id] = e.target.id.split('--'); /*destructuring */
+      const index = pets.findIndex(assignedPet => assignedPet.id === parseInt(id));
       if (e.target.id.includes("delete")) {
-        console.log("Delete Button Pressed") /*checked for button type */
+        // console.log("Delete Button Pressed") /*checked for button type */
+        pets.splice(index,1);
+        cardsOnDom(pets);
       }
     }
-  })
- 
-}
+  });
+// Forms
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // this goes in EVERY form submit to prevent page reload
+    // grab the values from the form inputs and create an object
+    // push that object to the data array    
+    // rerender cards using the cardsOnDom function and pass it the updated data array
+    const newPetObj = {
+      name: document.querySelector("#name").value,
+      color:document.querySelector('#color').value,
+      specialSkill: document.querySelector('#specialSkills'),
+      type: document.querySelector('#type').value,
+      // image: document.querySelector('#imageURL').checked,
+    }
+    pets.push(newPetObj);
+    cardsOnDom(pets);
+    // Close modal and reset form
+    formModal.hide()
+    form.reset();
+  });
+};
 
 /***Funtions to Start Application **********/
-
+const startApp = () => {
+petBtnModal();
 filterButtons();
 cardsOnDom(pets);
-petBtnModal();
+// petsId()
 eventListeners(); /* last*/
+};
 
-
-
-
-
-
-// const cardContainer = document.querySelector("#petApp"); /* this finds the div element with the id*/
-
-//   let cardInfo = ''; /* this will be the iterator that will be used as vessel for cards */
-//   for (const pet of pets) {
-//     cardInfo += `
-//     <div class="card" style="width: 18rem;">
-//     <h5>${pet.name}</h5>
-//     <div class="card-body">
-//       <img src="${pet.imageUrl}" class="card-img-top" alt="...">
-//         <p class="card-text">${pet.color}</p>
-//         <p class="card-text">${pet.specialSkill}</p>
-//       </div>
-//       <p class="type">${pet.type}</p>
-//   </div>
-//   `;
-//   }
-// cardContainer.innerHTML = cardInfo;
+startApp();

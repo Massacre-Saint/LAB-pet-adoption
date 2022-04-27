@@ -1,36 +1,79 @@
-:root {
-  margin: 0;
-  padding: 0;
-}
+ :root {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0; 
+} 
 body {
   background-color: #E5D4C0;
-  /* margin-left: 275px;
-  margin-right: 275px; */
   font-family: 'Roboto Condensed', sans-serif;
 }
- #petApp {
-   display: flex;
-   flex-wrap: wrap;
-   row-gap: 70px;
-   column-gap: 100px;
-   justify-content: center;
-   margin-left: 250px;
-   margin-right: 250px;
+ 
+#add-pet {
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content: end;
+}
+.add-pet{
+  background-color: red;
+  border-radius: 8px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 30px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  font-size: large;
+  font-weight: 400;
+}
+ #cat {
+   background-color: lightblue;
+   border-radius: 8px;
  }
-
- h5 {
-   background-color: #A1E8CC;
-   color: #4E3D42;
-   font-weight: bold;
-   text-align: center;
-   margin: 0px;
-   padding: 6px;
- } 
-
+ #dog {
+   background-color: lightsalmon;
+   border-radius: 8px;
+ }
+#dino {
+  background-color: lightgreen;
+  border-radius: 8px;
+}
+#clear {
+  background-color: lightslategray;;
+  border-radius: 8px;
+}
+#petApp {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 70px;
+  column-gap: 100px;
+  justify-content: center;
+}
 .card {
   background-color: #B47EB3;
-  border-radius: 5px;
-  
+  border-radius: 10px;
+  border: 4px solid #7a5661;
+  /* border-color:#4E3D42; */
+  box-shadow: -1px 11px 17px 7px rgba(180,126,179,0.37);
+}
+h5 {
+  background-color: #A1E8CC;
+  color: #4E3D42;
+  font-weight: bold;
+  text-align: center;
+  margin: 0px;
+  padding: 6px;
+  border-radius: 10px;
+} 
+.card > button {
+  border-radius: 10px;
+  width: 20%;
+  position: absolute;
+  right:0px;
+  background-color: hsl(301, 26%, 60%);
+  border: none;
 }
 .card img {
   border-style:solid;
@@ -47,10 +90,12 @@ body {
    align-self: flex-end;
  }
 
- .type {
-   background-color: #A1E8CC;
-   margin: 0px;
-   padding: 6px;
-   font-weight: bold;
-   color: #4E3D42;
- }
+.type {
+  background-color: #A1E8CC;
+  margin: 0px;
+  padding: 6px;
+  font-weight: bold;
+  color: #4E3D42;
+  border-radius: 10px;
+  border: none;
+}
