@@ -211,8 +211,8 @@ const pets = [
     }
   ];
   /* This is  for adding id value to array*/
-// const petsId = () =>
-  pets.forEach((pet,index, pets) => {
+const petsId = () =>
+  pets.forEach((pet,index) => {
   return pet.id = index + 1;                         
 });
 /****************************************** */
@@ -241,17 +241,17 @@ const petBtnModal = () => {
 
         <form>
         <div class="form-floating mb-3">
-          <input class="form-control form-control-lg" type="text" placeholder="Video ID" id="name" aria-label="video id" required>
+          <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="name" aria-label="Pet Name" required>
           <label for="videoId">Pet's Name</label>
         </div>
     
         <div class="form-floating mb-3">
-        <input class="form-control form-control-lg" type="text" placeholder="Title" id="color" aria-label="title" required>
+        <input class="form-control form-control-lg" type="text" placeholder="Pet's Favorite Color" id="color" aria-label="title" required>
         <label for="title">Favorite Color</label>
       </div>
 
       <div class="form-floating mb-3">
-      <input class="form-control form-control-lg" type="text" placeholder="Title" id="specialSkill" aria-label="title" required>
+      <input class="form-control form-control-lg" type="text" placeholder="Pet's Skill" id="specialSkill" aria-label="Pet's Skill" required>
       <label for="title">Special Skill</label>
     </div>
 
@@ -264,12 +264,14 @@ const petBtnModal = () => {
           </select>
           <label for="category">Type</label>
         </div>
+
+        <div class="form-floating mb-3">
+      <input class="form-control form-control-lg" type="text" placeholder="Title" id="imageUrl" aria-label="title" required>
+      <label for="title">Select an Image</label>
+    </div>
     
         <button 
-          type="submit" 
-          class="btn btn-success" 
-        >
-          Submit
+          type="submit" class="btn btn-success" data-bs-dismiss="modal">Submit
         </button>
       </form>
         </div>
@@ -317,25 +319,12 @@ const eventListeners = () => {
   const formModal = new bootstrap.Modal(document.querySelector('#add-pet'));
 
 /******************* Filter Button Row******************/
-// const button = document.querySelector('#id'); /*targets element on dom*/
-// button.addEventListener('click', () => {}); /*add event listerer*/
-// document.querySelector('#id').eventListener('click', () => {});
-// this is called chaining. when you append .event instead of making it a variable
   document.querySelector('#filter-buttons').addEventListener('click', (e) => {
     // console.log("Ck", e.target.id);
     if (e.target.id === 'clear') {
       cardsOnDom(pets);
     } else if (e.target.id) {
       const species = pets.filter(taco => taco.type === e.target.id);
-     
-      // const array =[];
-  // for (const vid of data) {
-  //   if (vid.favorite === true) {
-  //     array.push(vid);
-  //   }
-  // }
-  // cardsOnDom(array)
-
       cardsOnDom(species);
     }
   });
@@ -345,7 +334,6 @@ const eventListeners = () => {
       const [method, id] = e.target.id.split('--'); /*destructuring */
       const index = pets.findIndex(assignedPet => assignedPet.id === parseInt(id));
       if (e.target.id.includes("delete")) {
-        // console.log("Delete Button Pressed") /*checked for button type */
         pets.splice(index,1);
         cardsOnDom(pets);
       }
@@ -354,21 +342,18 @@ const eventListeners = () => {
 // Forms
   const form = document.querySelector('form');
   form.addEventListener('submit', (e) => {
-    e.preventDefault(); // this goes in EVERY form submit to prevent page reload
-    // grab the values from the form inputs and create an object
-    // push that object to the data array    
-    // rerender cards using the cardsOnDom function and pass it the updated data array
+    e.preventDefault();  
     const newPetObj = {
       name: document.querySelector("#name").value,
       color:document.querySelector('#color').value,
       specialSkill: document.querySelector('#specialSkills'),
       type: document.querySelector('#type').value,
-      // image: document.querySelector('#imageURL').checked,
+      imageUrl: document.querySelector('#imageUrl').value
     }
     pets.push(newPetObj);
     cardsOnDom(pets);
-    // Close modal and reset form
-    formModal.hide()
+    petsId(newPetObj);
+    formModal.hide();
     form.reset();
   });
 };
@@ -378,8 +363,9 @@ const startApp = () => {
 petBtnModal();
 filterButtons();
 cardsOnDom(pets);
-// petsId()
+petsId(pets);
 eventListeners(); /* last*/
 };
 
 startApp();
+// console.log(pets);
