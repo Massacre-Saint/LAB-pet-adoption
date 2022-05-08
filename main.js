@@ -213,8 +213,9 @@ const pets = [
   /* This is  for adding id value to array*/
 const petsId = () =>
   pets.forEach((pet,index) => {
-  return pet.id = index + 1;                         
+  pet.id = index + 1;                         
 });
+
 /****************************************** */
 
             /* Utility Function*/
@@ -226,11 +227,11 @@ const renderToDom = (divId, textToRender) => {
 const petBtnModal = () => {
   const domString = `
   <!-- Button trigger modal -->
-  <button type="button" class="add-pet" data-bs-toggle="modal" data-bs-target="#add-video">
+  <button type="button" class="add-pet-modal" data-bs-toggle="modal" data-bs-target="#petModal">
   Heartless Bastard
   </button>
   <!-- Modal -->
-  <div class="modal fade" id="add-video" tabindex="-1" aria-labelledby="add-video" aria-hidden="true">
+  <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModal" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen-md-down">
       <div class="modal-content">
         <div class="modal-header">
@@ -242,36 +243,36 @@ const petBtnModal = () => {
         <form>
         <div class="form-floating mb-3">
           <input class="form-control form-control-lg" type="text" placeholder="Pet Name" id="name" aria-label="Pet Name" required>
-          <label for="videoId">Pet's Name</label>
+          <label for="name">Pet's Name</label>
         </div>
     
         <div class="form-floating mb-3">
-        <input class="form-control form-control-lg" type="text" placeholder="Pet's Favorite Color" id="color" aria-label="title" required>
-        <label for="title">Favorite Color</label>
+        <input class="form-control form-control-lg" type="text" placeholder="Pet's Favorite Color" id="color" aria-label="Favorite Color" required>
+        <label for="color">Favorite Color</label>
       </div>
 
       <div class="form-floating mb-3">
       <input class="form-control form-control-lg" type="text" placeholder="Pet's Skill" id="specialSkill" aria-label="Pet's Skill" required>
-      <label for="title">Special Skill</label>
+      <label for="specialSkill">Special Skill</label>
     </div>
 
         <div class="form-floating mb-3">
-          <select class="form-select form-control-lg" id="type" aria-label="category" required>
+          <select class="form-select form-control-lg" id="type" aria-label="Pet type" required>
             <option value="">Select a species</option>
             <option value="cat">Cat</option>
             <option value="dog">Dog</option>
             <option value="dino">Dino</option>
           </select>
-          <label for="category">Type</label>
+          <label for="type">Type</label>
         </div>
 
         <div class="form-floating mb-3">
       <input class="form-control form-control-lg" type="text" placeholder="Title" id="imageUrl" aria-label="title" required>
-      <label for="title">Select an Image</label>
+      <label for="imageUrl">Select an Image</label>
     </div>
     
         <button 
-          type="submit" class="btn btn-success" data-bs-dismiss="modal">Submit
+          type="submit" class="btn btn-success">Submit
         </button>
       </form>
         </div>
@@ -316,7 +317,7 @@ const cardsOnDom = (pets) => {
 /******************* Events Listeners******************/
 const eventListeners = () => {
   // Bootstrap for grabbing modal so can manually open and close
-  const formModal = new bootstrap.Modal(document.querySelector('#add-pet'));
+  const formModal = new bootstrap.Modal(document.querySelector('#petModal'));
 
 /******************* Filter Button Row******************/
   document.querySelector('#filter-buttons').addEventListener('click', (e) => {
@@ -352,7 +353,7 @@ const eventListeners = () => {
     }
     pets.push(newPetObj);
     cardsOnDom(pets);
-    petsId(newPetObj);
+    petsId(pets);
     formModal.hide();
     form.reset();
   });
@@ -368,4 +369,3 @@ eventListeners(); /* last*/
 };
 
 startApp();
-// console.log(pets);
